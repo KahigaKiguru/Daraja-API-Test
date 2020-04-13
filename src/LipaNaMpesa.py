@@ -3,10 +3,15 @@ from requests.auth import HTTPBasicAuth
 import base64
 from datetime import datetime
 
-import user_credentials
-import authenticate_app
+from authenticate_app import authenticate_application
 
-#Generate timestamp
+import user_credentials
+
+# Generate and assign access token
+
+access_token = authenticate_application
+
+# Generate timestamp
 
 timestamp =  datetime.now().strftime("%Y%m%d%H%M%S")
 
@@ -16,16 +21,9 @@ credentials_to_encode = user_credentials.business_shortCode + user_credentials.l
 encoded_password = base64.b64encode(credentials_to_encode.encode())
 decoded_password = encoded_password.decode("utf-8")
 
-
-
-
-
-
 # Prepare and Send Transaction Request
 
-
-header = {"Authorization": "Bearer %s" %authenticate_app.access_token}
-
+header = {"Authorization": "Bearer %s" %access_token}
 
 request = {
             "BusinessShortCode": user_credentials.business_shortCode,
