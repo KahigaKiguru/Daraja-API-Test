@@ -128,3 +128,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# My Code 
+user_credentials.py
